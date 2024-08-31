@@ -1,7 +1,13 @@
+import React from "react";
+
+import AboutView from 'coffee/components/features/about/aboutview/aboutView'; 
+import History from 'coffee/components/features/about/history/history';
+
 export default function About() {
     return (
-        <section>
-            <h1>Page about</h1>
-        </section>
+        <>    
+            <AboutView /> 
+            <History />
+        </>
     )
 }

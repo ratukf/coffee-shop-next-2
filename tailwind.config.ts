@@ -6,7 +6,7 @@ const config: Config = {
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./node_modules/@nextui-org/theme/dist/components/(button|ripple|spinner).js"
+    "./node_modules/@nextui-org/theme/dist/components/(button|card|ripple|spinner).js"
   ],
   theme: {
     extend: {
@@ -18,6 +18,7 @@ const config: Config = {
       colors: {
         "calm-brown": "#C0AA83",
         "calm-black": "#242424",
+        "light-gray": "#F5F5F5",
       }
     },
   },

@@ -4,9 +4,9 @@ import {Button, ButtonGroup} from "@nextui-org/button";
 
 export default function Footer() {
     return(
-        <footer className="bg-calm-brown p-14 flex md:flex-row sm:flex-col justify-between">
+        <footer className="bg-calm-brown p-14 flex justify-between sm: flex-col lg:flex-row">
               <div>
-                <h1 className='text-4xl font-black mb-4'>CoffeeKing</h1>
+                <h1 className='text-4xl font-black mb-4'>Coffee Monster</h1>
                 <p className='mb-4'>
                 Experience the freshness of coffee daily at CoffeeKing 
                 </p>
