@@ -31,3 +31,22 @@ body {
     text-wrap: balance;
   }
 } */
+
+@keyframes animateCart {
+  0% {
+      transform: scale(1);
+  }
+  50% {
+      transform: scale(1.5) translateY(-20px);
+      opacity: 0.7;
+  }
+  100% {
+      transform: scale(0) translateY(-30px);
+      opacity: 0;
+  }
+}
+
+/* Animation class */
+.animate-animate-cart {
+  animation: animateCart 1s ease forwards;
+}

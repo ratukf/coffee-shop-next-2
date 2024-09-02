@@ -1,20 +1,20 @@
 import Link from 'next/link'
-import React, { useState } from 'react'
-import { useEffect } from 'react'
-import { FaBars, FaTimes } from 'react-icons/fa'
+import React, { useState, useEffect } from 'react'
+import { FaBars, FaTimes} from 'react-icons/fa'
+import { FaCartShopping } from "react-icons/fa6";
 import Image from 'next/image'
 import { useAtom } from 'jotai';
-import { currentUserAtom } from 'coffee/utils/loginAtoms';
 import { useRouter } from 'next/router';
 
-import image from 'coffee/images/nav-coffee-monster.png'
+import { currentUserAtom } from 'coffee/utils/loginAtoms';
+import { cartAtom } from 'coffee/utils/cartAtoms';
+import image from 'coffee/images/nav-coffee-monster.png';
 
 const Navbar: React.FC = () => {
     const [nav, setNav] = useState(false)
     const [currentUser, setCurrentUser] = useAtom(currentUserAtom);
     const router = useRouter();
-
-    console.log(currentUser);
+    const [cart] = useAtom(cartAtom);
 
     useEffect(() => {
         const storedUser = localStorage.getItem('currentUser');
@@ -70,11 +70,19 @@ const Navbar: React.FC = () => {
                 {links.map(({ id, link, name }) => (
                     <li
                         key={id}
-                        className="font-Kanit text-xl nav-link-item px-4 cursor-pointer capitalize font-bold text-[#b2935b] hover:scale-105 hover:text-[#242424] duration-200 link-underline"
+                        className="font-Kanit text-xl nav-link-item px-4 cursor-pointer capitalize font-bold text-calm-brown hover:scale-105 hover:text-calm-black duration-200 link-underline"
                     >
                         <Link href={link}>{name}</Link>
                     </li>
                 ))}
+                <li>
+                    <Link href="/cart">
+                        <FaCartShopping className='text-2xl mx-4 cursor-pointer text-calm-brown hover:scale-150 hover:text-calm-black duration-200'/>
+                        {cart.length > 0 && (
+                                <span className="ml-2 text-sm bg-red-500 text-white rounded-full px-2 py-1">{cart.length}</span>
+                            )}
+                    </Link>
+                </li>
             </ul>
 
             <div
@@ -115,7 +123,7 @@ const Navbar: React.FC = () => {
                         </>
                     ) : (
                         <li>
-                            <Link href="/login/login">
+                            <Link href="/login">
                                 <span className="text-[#b2935b] hover:text-[#242424]">Login</span>
                             </Link>
                         </li>

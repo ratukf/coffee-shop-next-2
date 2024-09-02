@@ -25,13 +25,13 @@ export default function AttractiveMenu() {
                                 src={`/images/${item.url}`}
                                 alt={`${item.title}`}
                                 layout="fill"
-                                objectFit="cover"
+                                objectFit="contain"
                                 className="rounded-t-lg"
                             />
                         </div>
                         <CardBody className="font-bold text-xl">
                             <h2 className="text-center">{item.title}</h2>
-                            <h2>{item.price}</h2>
+                            <h2>Rp. {item.price.toLocaleString('id-ID')}</h2>
                         </CardBody>
                     </Card>
                 ))}
