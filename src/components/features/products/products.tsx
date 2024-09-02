@@ -9,7 +9,12 @@ import { cartAtom } from 'coffee/utils/cartAtoms';
 export default function Products() {
     const [cart, setCart] = useAtom(cartAtom);
     const [isAnimating, setIsAnimating] = useState<number | null>(null);
-
+    interface Product {
+        url: string;
+        title: string;
+        description: string;
+        price: number;
+    }
 
     const addToCart = (product: Product, index: number) => {
         setCart((prevCart) => {
