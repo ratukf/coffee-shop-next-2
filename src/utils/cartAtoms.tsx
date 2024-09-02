@@ -1,4 +1,3 @@
-// cartAtoms.tsx
 import { atom } from 'jotai';
 
 export interface CartItem {
@@ -24,25 +23,23 @@ cartAtom.onMount = (setAtom) => {
     }
 };
 
+export { cartAtom };
 
-cartAtom.update = (getAtom, setAtom) => {
-    return (newCart: CartItem[]) => {
-        setAtom(newCart);
-        if (typeof window !== 'undefined') {
-            localStorage.setItem('cart', JSON.stringify(newCart));
-        }
-    };
+// Additional utility functions for updating and removing items
+
+export const updateCart = (setAtom: React.Dispatch<React.SetStateAction<CartItem[]>>, newCart: CartItem[]) => {
+    setAtom(newCart);
+    if (typeof window !== 'undefined') {
+        localStorage.setItem('cart', JSON.stringify(newCart));
+    }
 };
 
-cartAtom.removeItem = (getAtom, setAtom) => {
-    return (title: string) => {
-        const currentCart = getAtom(cartAtom);
-        const updatedCart = currentCart.filter(item => item.title !== title);
-        setAtom(updatedCart);
+export const removeItemFromCart = (setAtom: React.Dispatch<React.SetStateAction<CartItem[]>>, title: string) => {
+    setAtom((prevCart) => {
+        const updatedCart = prevCart.filter(item => item.title !== title);
         if (typeof window !== 'undefined') {
             localStorage.setItem('cart', JSON.stringify(updatedCart));
         }
-    };
+        return updatedCart;
+    });
 };
-
-export { cartAtom };

@@ -1,24 +1,23 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Data from 'coffee/data/menu';
 import Image from 'next/image';
-
 import { useAtom } from 'jotai';
 import { cartAtom } from 'coffee/utils/cartAtoms';
+import { Product } from 'coffee/types/productsType';
+import { CartItem } from 'coffee/utils/cartAtoms'; // Import CartItem type
 
 export default function Products() {
     const [cart, setCart] = useAtom(cartAtom);
     const [isAnimating, setIsAnimating] = useState<number | null>(null);
-    interface Product {
-        url: string;
-        title: string;
-        description: string;
-        price: number;
-    }
 
     const addToCart = (product: Product, index: number) => {
+        const cartItem: CartItem = {
+            ...product,
+            quantity: 1, // Default quantity for new items
+        };
+
         setCart((prevCart) => {
-            const updatedCart = [...prevCart, product];
+            const updatedCart = [...prevCart, cartItem];
             if (typeof window !== 'undefined') {
                 localStorage.setItem('cart', JSON.stringify(updatedCart));
             }
@@ -28,7 +27,6 @@ export default function Products() {
             return updatedCart;
         });
     };
-
 
     return (
         <section className="p-8 bg-calm-brown border-b-5">
@@ -71,7 +69,5 @@ export default function Products() {
                 ))}
             </div>
         </section>
-
-
-    )
+    );
 }
