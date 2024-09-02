@@ -1,19 +1,21 @@
-import { StaticImageData } from "next/image";
-import Image from "next/image";
-import image from "coffee/images/home-tamping.jpg";
+import { StaticImageData } from 'next/image'
+import Image from 'next/image'
+import image from 'coffee/images/home-tamping.jpg'
 
 interface HomeData {
-    header: string;
-    description: string;
-    src: StaticImageData;
-  }
+    header: string
+    description: string
+    src: StaticImageData
+}
 
-const story: HomeData[] = [{
-    header: "Fantastic Coffee Sip Story",
-    description: "Every sip of our coffee is a journey. From carefully selected beans harvested at peak ripeness to the expert brewing of our baristas, each cup tells a unique story. Indulge in rich flavors, enticing aromas, and a cozy atmosphere. We serve the highest quality coffee that will tantalize your taste buds. Each coffee bean is meticulously selected and roasted to perfection to deliver rich and complex flavors. Taste the difference in every sip.",
-    src: image 
-},
-];
+const story: HomeData[] = [
+    {
+        header: 'Fantastic Coffee Sip Story',
+        description:
+            'Every sip of our coffee is a journey. From carefully selected beans harvested at peak ripeness to the expert brewing of our baristas, each cup tells a unique story. Indulge in rich flavors, enticing aromas, and a cozy atmosphere. We serve the highest quality coffee that will tantalize your taste buds. Each coffee bean is meticulously selected and roasted to perfection to deliver rich and complex flavors. Taste the difference in every sip.',
+        src: image,
+    },
+]
 export default function Story() {
     return (
         <section className="w-full sm:pl-8 md:pl-14">
@@ -40,5 +42,5 @@ export default function Story() {
                 </div>
             ))}
         </section>
-    );
+    )
 }
