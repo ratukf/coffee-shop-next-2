@@ -24,9 +24,11 @@ export default function AttractiveMenu() {
                             <Image
                                 src={`/images/${item.url}`}
                                 alt={`${item.title}`}
-                                layout="fill"
+                                fill
                                 objectFit="contain"
                                 className="rounded-t-lg"
+                                priority
+                                sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
                             />
                         </div>
                         <CardBody className="font-bold text-xl">

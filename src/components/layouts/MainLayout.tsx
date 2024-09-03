@@ -1,11 +1,11 @@
 import { PropsWithChildren } from 'react'
-import Navbar from './navbar/Navbar'
-import Footer from './footer/Footer'
+import Header from 'coffee/components/layouts/Header/index'
+import Footer from 'coffee/components/layouts/Footer/Footer'
 
 export default function Layout({ children }: PropsWithChildren) {
     return (
         <>
-            <Navbar />
+            <Header />
             <main>{children}</main>
             <Footer />
         </>

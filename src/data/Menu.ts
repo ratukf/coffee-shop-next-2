@@ -1,4 +1,6 @@
-const menu = [
+import {MenusTypes} from 'coffee/data/MenuTypes';
+
+const Menu:MenusTypes = [
     {
         url: 'menu-espresso.png',
         title: 'Espresso',
@@ -85,4 +87,4 @@ const menu = [
     },
 ]
 
-export default menu
+export default Menu;

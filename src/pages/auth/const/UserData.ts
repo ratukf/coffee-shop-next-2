@@ -1,10 +1,6 @@
-export interface User {
-    name: string;
-    email: string;
-    password: string;
-  }
-  
-  export const userLogin: User[] = [
+import UserDataType from 'coffee/pages/auth/type/UserDataType'
+
+const UserData: UserDataType[] = [
     {
       name: 'Ratu',
       email: 'ratu@example.com',
@@ -32,3 +28,4 @@ export interface User {
     },
   ];
   
+export default UserData;  

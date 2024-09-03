@@ -6,20 +6,22 @@ import Image from 'next/image'
 import { useAtom } from 'jotai';
 import { useRouter } from 'next/router';
 
-import { currentUserAtom } from 'coffee/utils/loginAtoms';
-import { cartAtom } from 'coffee/utils/cartAtoms';
+import { currentUserAtom } from 'coffee/store/loginAtoms';
+import { cartAtom } from 'coffee/store/cartAtoms';
 import image from 'coffee/images/nav-coffee-monster.png';
+// import { authAtom } from 'coffee/store/authAtoms';
 
 const Navbar: React.FC = () => {
     const [nav, setNav] = useState(false)
     const [currentUser, setCurrentUser] = useAtom(currentUserAtom);
     const router = useRouter();
     const [cart] = useAtom(cartAtom);
+    // const [auth] = useAtom(authAtom);
 
     useEffect(() => {
         const storedUser = localStorage.getItem('currentUser');
         if (storedUser) {
-          setCurrentUser(JSON.parse(storedUser)); // Set state currentUser dengan data dari localStorage
+          setCurrentUser(JSON.parse(storedUser)); 
         }
       }, [setCurrentUser]);
 
@@ -28,6 +30,15 @@ const Navbar: React.FC = () => {
         localStorage.removeItem('currentUser');
         router.push('/');
     }
+
+    // const handleAddToCart = () => {
+    //     if (!auth) {
+    //         alert('You must be logged in to add items to the cart.');
+    //         return;
+    //     }
+
+    //     router.push('/cart');
+    // }
 
     const links = [
         {
@@ -61,6 +72,7 @@ const Navbar: React.FC = () => {
                             alt="Coffee Monster Logo"
                             width={300}
                             quality={50}
+                            priority
                         />
                     </Link>
                 </h1>

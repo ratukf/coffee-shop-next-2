@@ -1,7 +1,6 @@
 import React from 'react'
-import { useAtom } from 'jotai';
 
-import Products from 'coffee/components/features/products/products';
+import Products from 'coffee/components/features/Product/index';
 
 export default function About() {
     return (

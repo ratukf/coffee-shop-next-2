@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import Data from 'coffee/data/menu';
 import Image from 'next/image';
 import { useAtom } from 'jotai';
-import { cartAtom } from 'coffee/utils/cartAtoms';
-import { Product } from 'coffee/types/productsType';
-import { CartItem } from 'coffee/utils/cartAtoms'; // Import CartItem type
+import { cartAtom } from 'coffee/trash/utils/cartAtoms';
+import Product from 'coffee/types/productsType';
+import { CartItem } from 'coffee/trash/utils/cartAtoms'; // Import CartItem type
 
 export default function Products() {
     const [cart, setCart] = useAtom(cartAtom);
@@ -21,7 +21,6 @@ export default function Products() {
             if (typeof window !== 'undefined') {
                 localStorage.setItem('cart', JSON.stringify(updatedCart));
             }
-            console.log('prevCart: ', prevCart);
             setIsAnimating(index);
             setTimeout(() => setIsAnimating(null), 1000);
             return updatedCart;
@@ -42,10 +41,12 @@ export default function Products() {
                         <div className="relative w-full h-48">
                             <Image
                                 src={`/images/${item.url}`}
-                                layout="fill"
-                                objectFit="contain"  
+                                fill
+                                style={{ objectFit: 'contain' }}
                                 alt={item.title || ''}
                                 className="rounded-t-lg"
+                                priority
+                                sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
                             />
                         </div>
                         <div className="p-4 flex flex-col justify-between flex-grow">
