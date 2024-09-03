@@ -10,12 +10,13 @@ const Auth = () => {
   const [, setLoggedInUser] = useAtom(loggedInUserAtom);
   const [error, setError] = useAtom(authErrorAtom);
 
+
   const router = useRouter();
 
   const handleLogin = () => {
     const user = authenticateUser(email, password);
     
-    if (user) {
+    if (user) { 
       // Jika user ditemukan, simpan data user ke dalam atom Jotai
       setLoggedInUser(user);
       setError('');
